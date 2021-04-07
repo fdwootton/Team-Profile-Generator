@@ -34,6 +34,10 @@ inquirer
     .prompt(questions)
     .then((response) => {
         console.log(response);
+
+        fs.writeFile('myteam.html', starterHTML, (error) => {
+            error ? console.log(error) : console.log('Starter HTML created!');
+        })
     });
 
 
