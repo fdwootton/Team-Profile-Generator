@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-
+const Employee = require('./lib/Employee')
 const starterHTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
