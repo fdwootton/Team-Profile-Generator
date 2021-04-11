@@ -1,14 +1,5 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-// const { COMPLETIONSTATEMENT_TYPES } = require('@babel/types'); 
-
-const questions = [
-    {
-        type: 'input',
-        message: 'What is your team members name?',
-        name: 'name'
-    }
-];
 
 const starterHTML = `<!DOCTYPE html>
 <html lang="en">
@@ -30,15 +21,73 @@ const starterHTML = `<!DOCTYPE html>
 </body>
 </html>`
 
-inquirer
-    .prompt(questions)
+function addManager() {
+    inquirer
+    .prompt({
+        type: 'input',
+        message: 'Enter the name of your team manager:',
+        name: 'managerName'
+    },
+    {
+        type: 'input',
+        message: 'Enter the id of your team manager:',
+        name: 'managerId'
+    },
+    {
+        type: 'input',
+        message: 'Enter the email of your team manager:',
+        name: 'managerEmail'
+    },
+    {
+        type: 'input',
+        message: 'Enter the office number of your team manager:',
+        name: 'managerOffice'
+    },
+    
+    )
     .then((response) => {
         console.log(response);
 
         fs.writeFile('myteam.html', starterHTML, (error) => {
             error ? console.log(error) : console.log('Starter HTML created!');
         })
+
+        addTeamMember();
     });
+};
 
+function addTeamMember() {
+    inquirer
+    .prompt({
+        type: 'list',
+        message: 'Would you like to add another team member?',
+        choices: [
+            'Yes, add an Intern',
+            'Yes, add an Engineer',
+            'No, I am finished building my team'
+        ],
+        name: 'memberType'
+    })
+    .then((response) => {
+        console.log(response);
 
+        const choice = response.memberType;
+        if(choice === 'Yes, add an Intern') {
+            addIntern();
+        }
+        else if(choice === 'Yes, add an Engineer') {
+            addEngineer();
+        }
+        else {
+            console.log('Team Complete!')
+        }
 
+        fs.writeFile('myteam.html', starterHTML, (error) => {
+            error ? console.log(error) : console.log('Starter HTML created!');
+        })
+
+        addTeamMember();
+    });
+}
+
+addManager();
