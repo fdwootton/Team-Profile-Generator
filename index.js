@@ -8,7 +8,7 @@ const Engineer = require('./lib/Engineer');
 
 let teamMemberArray = [];
 
-const starterHTML = `<!DOCTYPE html>
+const generateHTML = (response) => `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,6 +24,15 @@ const starterHTML = `<!DOCTYPE html>
     <header class = "jumbotron" style="text-align: center";>
         <h1>My Team</h1>
     </header>
+
+    <div class="card text-center">
+        <div class="card-body">
+        <h5 class="card-title">Manager: ${response.managerName} </h5>
+        <p class="card-text">ID: ${response.managerId}</p>
+        <p class="card-text">Email: ${response.managerEmail}</p>
+        <p class="card-text">Office #: ${response.managerOffice}</p>
+        </div>
+    </div>
     
 </body>
 </html>`
@@ -60,9 +69,10 @@ function addManager() {
         let teamManager = new Manager(name, id, email, officeNumber);
         teamMemberArray.push(teamManager);
 
-        // fs.writeFile('myteam.html', starterHTML, (error) => {
-        //     error ? console.log(error) : console.log('Starter HTML created!');
-        // })
+        const HTML = generateHTML(response);
+        fs.writeFile('myteam.html', HTML, (error) => {
+            error ? console.log(error) : console.log('Starter HTML created!');
+        })
 
         addTeamMember();
     });
