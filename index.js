@@ -24,34 +24,33 @@ const starterHTML = `<!DOCTYPE html>
 
 function addManager() {
     inquirer
-    .prompt({
+    .prompt([{
         type: 'input',
-        message: 'Enter the name of your team manager:',
+        message: 'Enter the name of the team manager:',
         name: 'managerName'
     },
     {
         type: 'input',
-        message: 'Enter the id of your team manager:',
+        message: 'Enter the id of the team manager:',
         name: 'managerId'
     },
     {
         type: 'input',
-        message: 'Enter the email of your team manager:',
+        message: 'Enter the email of the team manager:',
         name: 'managerEmail'
     },
     {
         type: 'input',
-        message: 'Enter the office number of your team manager:',
+        message: 'Enter the office number of the team manager:',
         name: 'managerOffice'
     },
     
-    )
+])
     .then((response) => {
-        console.log(response);
 
-        fs.writeFile('myteam.html', starterHTML, (error) => {
-            error ? console.log(error) : console.log('Starter HTML created!');
-        })
+        // fs.writeFile('myteam.html', starterHTML, (error) => {
+        //     error ? console.log(error) : console.log('Starter HTML created!');
+        // })
 
         addTeamMember();
     });
@@ -59,7 +58,7 @@ function addManager() {
 
 function addTeamMember() {
     inquirer
-    .prompt({
+    .prompt([{
         type: 'list',
         message: 'Would you like to add another team member?',
         choices: [
@@ -68,9 +67,8 @@ function addTeamMember() {
             'No, I am finished building my team'
         ],
         name: 'memberType'
-    })
+    }])
     .then((response) => {
-        console.log(response);
 
         const choice = response.memberType;
         if(choice === 'Yes, add an Intern') {
@@ -82,13 +80,67 @@ function addTeamMember() {
         else {
             console.log('Team Complete!')
         }
-
-        fs.writeFile('myteam.html', starterHTML, (error) => {
-            error ? console.log(error) : console.log('Starter HTML created!');
-        })
-
-        addTeamMember();
     });
 }
+
+function addIntern() {
+    inquirer
+    .prompt([{
+        type: 'input',
+        message: 'Enter the name of the intern:',
+        name: 'internName'
+    },
+    {
+        type: 'input',
+        message: 'Enter the id of the intern:',
+        name: 'internId'
+    },
+    {
+        type: 'input',
+        message: 'Enter the email of the intern:',
+        name: 'internEmail'
+    },
+    {
+        type: 'input',
+        message: 'Enter the school of the intern:',
+        name: 'internSchool'
+    },
+    
+])
+    .then((response) => {
+
+        addTeamMember();
+    }
+)};
+
+function addEngineer() {
+    inquirer
+    .prompt([{
+        type: 'input',
+        message: 'Enter the name of the engineer:',
+        name: 'engineerName'
+    },
+    {
+        type: 'input',
+        message: 'Enter the id of the engineer:',
+        name: 'engineerId'
+    },
+    {
+        type: 'input',
+        message: 'Enter the email of the engineer:',
+        name: 'engineerEmail'
+    },
+    {
+        type: 'input',
+        message: 'Enter the github username of the engineer:',
+        name: 'engineerGithub'
+    },
+    
+])
+    .then((response) => {
+
+        addTeamMember();
+    }
+)};
 
 addManager();
