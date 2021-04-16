@@ -1,6 +1,7 @@
 const Employee = require('../lib/Employee');
  
 describe('Employee', () => {
+  
   it('should define name via constructor argument and get name via getName() method', () => {
     const testName = "John";
     const employee = new Employee ("John")
