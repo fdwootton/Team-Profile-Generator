@@ -37,6 +37,30 @@ const generateHTML = (response) => `<!DOCTYPE html>
 </body>
 </html>`
 
+const appendEngineerHTML = (response) => `
+    <div class="card text-center">
+        <div class="card-body">
+        <h5 class="card-title">Engineer: ${response.engineerName} </h5>
+        <p class="card-text">ID: ${response.engineerId}</p>
+        <p class="card-text">Email: ${response.engineerEmail}</p>
+        <p class="card-text">Github Username: ${response.engineerGithub}</p>
+        </div>
+    </div>
+</body>
+</html>`
+
+const appendInternHTML = (response) => `
+    <div class="card text-center">
+        <div class="card-body">
+        <h5 class="card-title">Intern: ${response.internName} </h5>
+        <p class="card-text">ID: ${response.internId}</p>
+        <p class="card-text">Email: ${response.internEmail}</p>
+        <p class="card-text">School: ${response.internSchool}</p>
+        </div>
+    </div>
+</body>
+</html>`
+
 function addManager() {
     inquirer
     .prompt([{
@@ -138,6 +162,11 @@ function addIntern() {
         let teamIntern = new Intern(name, id, email, school);
         teamMemberArray.push(teamIntern);
 
+        const internHTML = appendInternHTML(response);
+        fs.appendFile('myteam.html', internHTML, (error) => {
+            error ? console.log(error) : console.log('Starter HTML created!');
+        })
+
         addTeamMember();
     }
 )};
@@ -173,6 +202,11 @@ function addEngineer() {
         let github = response.engineerGithub;
         let teamEngineer = new Engineer(name, id, email, github);
         teamMemberArray.push(teamEngineer);
+
+        const engineerHTML = appendEngineerHTML(response);
+        fs.appendFile('myteam.html', engineerHTML, (error) => {
+            error ? console.log(error) : console.log('Starter HTML created!');
+        })
         
         addTeamMember();
     }
