@@ -2,7 +2,6 @@ const Manager = require('../lib/Manager');
  
 describe('Manager', () => {
 
-  describe('Manager', () => {
     it('should define name via constructor argument and get name via getName() method', () => {
       const testName = "John";
       const manager = new Manager ("John")
@@ -36,5 +35,4 @@ describe('Manager', () => {
       const manager = new Manager;
       expect(manager.getRole()).toBe(testRole);
     });
-  });
 });
