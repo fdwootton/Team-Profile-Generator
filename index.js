@@ -1,6 +1,12 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+
 const Employee = require('./lib/Employee');
+const Manager = require('./lib/Manager');
+const Intern = require('./lib/Intern');
+const Engineer = require('./lib/Engineer');
+
+let teamMemberArray = [];
 
 const starterHTML = `<!DOCTYPE html>
 <html lang="en">
@@ -47,6 +53,12 @@ function addManager() {
     
 ])
     .then((response) => {
+        let name = response.managerName;
+        let id = response.managerId;
+        let email = response.managerEmail;
+        let officeNumber = response.managerOffice;
+        let teamManager = new Manager(name, id, email, officeNumber);
+        teamMemberArray.push(teamManager);
 
         // fs.writeFile('myteam.html', starterHTML, (error) => {
         //     error ? console.log(error) : console.log('Starter HTML created!');
@@ -79,6 +91,7 @@ function addTeamMember() {
         }
         else {
             console.log('Team Complete!')
+            console.log(teamMemberArray);
         }
     });
 }
@@ -108,6 +121,12 @@ function addIntern() {
     
 ])
     .then((response) => {
+        let name = response.internName;
+        let id = response.internId;
+        let email = response.internEmail;
+        let school = response.internSchool;
+        let teamIntern = new Intern(name, id, email, school);
+        teamMemberArray.push(teamIntern);
 
         addTeamMember();
     }
@@ -138,7 +157,13 @@ function addEngineer() {
     
 ])
     .then((response) => {
-
+        let name = response.engineerName;
+        let id = response.engineerId;
+        let email = response.engineerEmail;
+        let github = response.engineerGithub;
+        let teamEngineer = new Engineer(name, id, email, github);
+        teamMemberArray.push(teamEngineer);
+        
         addTeamMember();
     }
 )};
