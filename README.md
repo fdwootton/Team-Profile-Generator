@@ -13,7 +13,7 @@
   - [Questions](#questions)
 
   ## **Installation**
-  npm i (inquirer and jest are in the package.json file)
+  run "npm i" in the terminal (inquirer and jest are in the package.json file)
 
   ## **Usage**
   First, clone the repository. Open your terminal and navigate to the Team-Profile_Generator directory. Run "npm i" in the terminal. Run "node ." to start the application.
