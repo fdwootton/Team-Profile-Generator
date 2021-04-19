@@ -1,6 +1,6 @@
 
   # Team Profile Generator
-  ![badge](https://img.shields.io/badge/license-ISC-brightgreen)<br />
+  ![badge](https://img.shields.io/badge/license-MIT-brightgreen)<br />
   
   ## **Description**
   This application generates an HTML file that contains customized information about members apart of your team.
