@@ -18,7 +18,7 @@
   ## **Usage**
   First, clone the repository. Open your terminal and navigate to the Team-Profile_Generator directory. Run "npm i" in the terminal. Run "node ." to start the application.
 
-    Click [**HERE**](https://drive.google.com/file/d/1PUQ2L5SxjNaft7bcV465IbkIw538qbcO/view) for Team Profile Generator Demo 
+  Click [**HERE**](https://drive.google.com/file/d/1PUQ2L5SxjNaft7bcV465IbkIw538qbcO/view) for Team Profile Generator Demo 
 
   ## **License**
   ![badge](https://img.shields.io/badge/license-MIT-brightgreen)<br/>
