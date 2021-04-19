@@ -125,7 +125,6 @@ function addTeamMember() {
         }
         else {
             console.log('Team Complete!')
-            console.log(teamMemberArray);
         }
     });
 }
